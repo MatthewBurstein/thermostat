@@ -1,0 +1,26 @@
+.title {
+  margin-top: 5em;
+  margin-bottom: 3em;
+  text-align: center;
+  font-family: Work Sans;
+  font-size: 3em;
+}
+
+.main_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 0.3em;
+  grid-row-gap: 0.3em;
+  width: 60%;
+  margin-left: 20%;
+}
+
+.single_window {
+  font-family: Work Sans;
+  background-color: grey;
+  height: 3em;
+}
+
+.description {
+  text-align: center;
+}
