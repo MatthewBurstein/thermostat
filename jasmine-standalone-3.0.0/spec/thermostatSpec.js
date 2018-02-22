@@ -97,4 +97,15 @@ describe('Thermostat', function() {
       expect(thermostat.energyUsage()).toEqual('high-usage')
     })
   })
-});
+
+  describe(".displayMode", function() {
+    it("returns 'Power Saving mode' when powerSavingModeOn === true", function () {
+      expect(thermostat.displayMode()).toEqual('Power Saving Mode')
+    })
+
+    it("returns 'Conventional Mode' when powerSavingModeOn === false", function() {
+        thermostat.togglePowerSavingMode()
+        expect(thermostat.displayMode()).toEqual('Conventional Mode')
+    })
+  })
+})

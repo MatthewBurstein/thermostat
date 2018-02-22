@@ -40,3 +40,8 @@ Thermostat.prototype.energyUsage = function() {
     return "high-usage"
   }
 }
+
+Thermostat.prototype.displayMode = function() {
+  if (this.powerSavingModeOn) {return 'Power Saving Mode'}
+  else {return 'Conventional Mode'}
+}
