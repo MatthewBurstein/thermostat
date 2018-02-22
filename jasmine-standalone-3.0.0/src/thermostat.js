@@ -6,15 +6,18 @@ function Thermostat() {
 };
 
 Thermostat.prototype.up = function(number) {
-  this.temperature += number
+  if (this.temperature + number > this.maxTemperature) {
+    this.temperature = this.maxTemperature
+  } else {
+    this.temperature += number
+  }
 }
 
 Thermostat.prototype.down = function(number) {
   if (this.temperature - number <  this._minTemperature) {
     this.temperature = this._minTemperature
-    throw new Error("minimum temperature reached")
   } else {
-  this.temperature -= number
+    this.temperature -= number
   }
 }
 
@@ -44,4 +47,16 @@ Thermostat.prototype.energyUsage = function() {
 Thermostat.prototype.displayMode = function() {
   if (this.powerSavingModeOn) {return 'Power Saving Mode'}
   else {return 'Conventional Mode'}
+}
+
+Thermostat.prototype.maxTemperatureAlert = function() {
+  if(this.temperature === this.maxTemperature) {
+    alert("Maximum temperature reached")
+  }
+}
+
+Thermostat.prototype.minTemperatureAlert = function() {
+  if(this.temperature === this._minTemperature) {
+    alert("Minimum temperature reached")
+  }
 }

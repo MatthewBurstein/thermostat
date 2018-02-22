@@ -3,6 +3,7 @@ describe('Thermostat', function() {
 
   beforeEach(function() {
     thermostat = new Thermostat();
+    spyOn(window, 'alert');
   });
 
   it("is instantiated with 20 degrees", function() {
@@ -31,10 +32,6 @@ describe('Thermostat', function() {
     })
 
     describe("when it would be reduced below 10", function() {
-      it("throws 'minimum temperature reached' error", function() {
-        expect(function() {thermostat.down(11)}).toThrowError("minimum temperature reached")
-      })
-
       it("sets the temperature to 10", function() {
         try {
           thermostat.down(11);
@@ -106,6 +103,23 @@ describe('Thermostat', function() {
     it("returns 'Conventional Mode' when powerSavingModeOn === false", function() {
         thermostat.togglePowerSavingMode()
         expect(thermostat.displayMode()).toEqual('Conventional Mode')
+    })
+  })
+
+  describe("maxTemperatureAlert", function() {
+    it("alerts when maximum temperature reached", function(){
+      thermostat.up(50)
+      thermostat.maxTemperatureAlert()
+      expect(window.alert).toHaveBeenCalledWith("Maximum temperature reached")
+    })
+  })
+
+
+  describe("minTemperatureAlert", function() {
+    it("alerts when minimum temperature reached", function() {
+      thermostat.down(50)
+      thermostat.minTemperatureAlert()
+      expect(window.alert).toHaveBeenCalledWith("Minimum temperature reached")
     })
   })
 })

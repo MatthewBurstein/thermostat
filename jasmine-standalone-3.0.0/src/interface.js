@@ -16,11 +16,17 @@ $( document ).ready(function() {
   })
 
   $('.increase_form').submit(function(e) {
-    console.log(e)
     e.preventDefault();
-    console.log(e.target.number.value)
     thermostat.up(parseInt(e.target.number.value))
     updateTemperature()
+    thermostat.maxTemperatureAlert()
+  })
+
+  $('.decrease_form').submit(function(event) {
+    event.preventDefault();
+    thermostat.down(parseInt(event.target.number.value))
+    updateTemperature()
+    thermostat.minTemperatureAlert()
   })
 
   function updateModeInformation() {
