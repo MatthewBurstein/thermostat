@@ -15,12 +15,12 @@ $( document ).ready(function() {
     updateTemperature()
   })
 
-  $ ('.increase_form').submit(function(e) {
+  $('.increase_form').submit(function(e) {
+    console.log(e)
     e.preventDefault();
-    $.ajax({
-      data: $(this).serialize(),
-      success: thermostat.up(this.number)
-    })
+    console.log(e.target.number.value)
+    thermostat.up(parseInt(e.target.number.value))
+    updateTemperature()
   })
 
   function updateModeInformation() {
