@@ -24,3 +24,15 @@
 .description {
   text-align: center;
 }
+
+.low-usage {
+  background-color: green;
+}
+
+.medium-usage {
+  background-color: orange;
+}
+
+.high-usage {
+  background-color: red;
+}
