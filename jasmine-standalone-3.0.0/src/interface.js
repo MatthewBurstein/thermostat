@@ -15,6 +15,14 @@ $( document ).ready(function() {
     updateTemperature()
   })
 
+  $ ('.increase_form').submit(function(e) {
+    e.preventDefault();
+    $.ajax({
+      data: $(this).serialize(),
+      success: thermostat.up(this.number)
+    })
+  })
+
   function updateModeInformation() {
     $('.mode_information').text(thermostat.displayMode());
   };
